@@ -1,1 +1,1 @@
-web: gunicorn sproject.wsgi:application
+web: gunicorn dtodo.wsgi:application
