@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block tittle %}
+Message.... Page
+{% endblock tittle %}
+
+ 
+{% block body %}
+<h5 style='color:black;'>write message to {{messageto}}</h5>
+<form action="" method="post"></form>
+        {% comment %} <div>
+        <div class="form-outline">
+        <input type="text" id="typeText" class="form-control" />
+        <label class="form-label" for="typeText">To..</label>
+        </div><br> {% endcomment %}
+        <div class="form-outline">
+            <textarea disabled class="form-control" id="textarea" rows="5" ></textarea>
+           
+        </div>
+        <div class="form-outline">
+            <input type="text" class="form-control" id="text" >
+            <label class="form-label" for="textAreaExample" id = 'textlabel'>write your Message....</label>
+        </div>
+            </div>
+            <input type="submit" value="send" id='btn' class= "btn btn-success btn-rounded" >
+
+ </form> 
+ <br><br>
+<a href='/logout' class="btn btn-danger btn-rounded" style="margin-top:5px; margin-left:50%;">logout</a>
+{{ messageto|json_script:"receiver" }}
+{{sender|json_script:"sender"}}
+<script>
+const receiver=JSON.parse(document.getElementById('receiver').textContent);             
+console.log(window.location.pathname)
+const socket = new WebSocket(
+  'ws://'
+  + window.location.host
+  + '/ws/todo/'
+  + receiver
+  + '/'
+);
+
+socket.onopen=(e)=>{
+    console.log("websocket connection open...")
+ }
+   
+socket.onmessage =(e)=>{//handle when message receive
+    const data = JSON.parse(e.data);
+    console.log(data)
+    document.getElementById('textarea').value+=(data.message+'\n')
+    }
+
+socket.onclose=(e)=>{
+    console.error('chat socket closed unexpectedly')
+}
+
+   document.getElementById('text').focus()
+   document.getElementById('text').onkeyup = (event)=> {
+    if (event.keyCode === 13) {  // enter, return
+        document.getElementById('btn').click();
+    }
+};
+    const sender=JSON.parse(document.getElementById('sender').textContent)
+    document.getElementById('btn').onclick=(event)=>{
+    const messageInputDom = document.getElementById('text');
+    const message = messageInputDom.value;
+    socket.send(JSON.stringify({
+        'message': message,
+        'user':sender,
+        'receiver':receiver
+        
+    }));
+    messageInputDom.value = '';
+};
+
+</script>   
+
+{% endblock body %}
+

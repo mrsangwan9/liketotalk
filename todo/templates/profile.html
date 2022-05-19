@@ -4,6 +4,32 @@ Profile Page
   
 {% endblock title %}
 {% block body %}
-Hey {{username}}<br>
-<a href='/logout'>logout</a>
+<div style="display: flex"><h3>Hey </h3>
+<h3 style="color:Green">{{username}}</h3></div>
+<br>
+<p>Whom you want to send message</p>
+
+{% for user in users  %}
+{% comment %} just ingore the login user name can't talk to yourself atleast here {% endcomment %}
+{% if  user.name != username %}<ul> 
+<li><a href ={% url 'message' user.name %}>{{ user.name }}</a></li>
+</ul>{% endif %}
+{% endfor %}
+      
+    <br><br>
+<a href='/logout' class="btn btn-danger btn-rounded" style="margin-top:5px; margin-left:50%;">logout</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock body %}
