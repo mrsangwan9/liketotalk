@@ -9,5 +9,5 @@ urlpatterns = [
     path('login/',views.loginn,name='login'),
     path('profile/', views.profile,name = 'profile'),
     path('logout',views.logoutt,name='logout'),
-    path('message/<str:messageto>',views.messagee, name= "message")
+    path('message/<int:other_user_id>',views.messagee, name= "message")
 ]

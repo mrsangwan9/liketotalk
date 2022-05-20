@@ -58,11 +58,10 @@ def profile(request):
 
 
 
-def messagee(request, messageto):
+def messagee(request, other_user_id):
     if request.user.is_authenticated:
            sendby=request.user.name
-           receiver= messageto
-           return render(request,"message.html",{"messageto":receiver,"sender":sendby})
+           return render(request,"message.html",{"other_user_id":other_user_id,"sender":sendby})
     else:
         return HttpResponseRedirect("/login")  
 

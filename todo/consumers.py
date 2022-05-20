@@ -1,38 +1,53 @@
 import json
 from .models import MyUser
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
  # that page handle server movement with handlers what the server will response.
 
 
-class mywebsocket(WebsocketConsumer):
-      def connect(self): # handler for request for connection to server
-          print('connect')
-          print('channel layer',self.channel_layer)
-          print('channel name ',self.channel_name)
-          receiver = self.scope['url_route']['kwargs']['user_name']
-          print(receiver)
+class myasyncconsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+          my_id= self.scope['user'].id
+          other_id = self.scope['url_route']['kwargs']['other_id']
+          print(my_id,other_id)
+          if int(my_id)> int(other_id):
+              self.room_name = f'{my_id}-{other_id}'
+          else:
+              self.room_name= f'{other_id}-{my_id}'
+            
+          self.room_group_name = 'chat_%s' % self.room_name
+
+          await self.channel_layer.group_add(
+              self.room_group_name,
+              self.channel_name
+          )
+          await self.accept()
 
 
-          self.accept()# connection accept handler by server
-        
-      def receive(self, text_data=None, bytes_data=None):# handler for message receive from server
-           # print('message recive from client',text_data)
-            payload = json.loads(text_data)
-            print(payload['user'])
-            print(payload['receiver'])
+    async def receive(self, text_data=None, bytes_data=None):
+        data = json.loads(text_data)
+        message = data['message']
+        username = data['user']
+        await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        'type': 'chat_message',
+                        'message': message,
+                        'username': username,
+            }
+        )
 
-            from_user =async_to_sync(MyUser.objects.get(name=payload['user']))
-            print(from_user)    # get user object of friend
-            to_user =async_to_sync(MyUser.objects.get)(name=payload['receiver'])
+    async def chat_message(self, event):
+        message = event['message']
+        username = event['username']
 
-            # text_data_json = json.loads(text_data)# messsage receive in string so we can't use python function on this most of.
-            # json.loads change string data into python __dict__ data type for making it  a key value pair
-            message = payload['message'] # get message from client and assgin into message with the help of __dict__ key message now value will assign
-           
-            self.send(text_data=json.dumps({ # send the response to client after change the data __dict__ to string with the help of json.dumps
-                'message' : message
-            }))
+        await self.send(text_data=json.dumps({
+            'message': message,
+            'username': username
+        }))
 
-      def disconnect(self, code):
-            return super().disconnect(code)
+    async def disconnect(self, code):
+        self.channel_layer.group_discard(
+            self.room_group_name,
+            self.channel_name
+        )
