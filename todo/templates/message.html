@@ -6,27 +6,39 @@ Message.... Page
 
  
 {% block body %}
-<h5 style='color:black;'>write message to {{messageto}}</h5>
-<form action="" method="post"></form>
-        {% comment %} <div>
-        <div class="form-outline">
-        <input type="text" id="typeText" class="form-control" />
-        <label class="form-label" for="typeText">To..</label>
-        </div><br> {% endcomment %}
-        <div class="form-outline">
-            <textarea disabled class="form-control" id="textarea" rows="5" ></textarea>
-           
-        </div>
-        <div class="form-outline">
-            <input type="text" class="form-control" id="text" >
-            <label class="form-label" for="textAreaExample" id = 'textlabel'>write your Message....</label>
-        </div>
-            </div>
-            <input type="submit" value="send" id='btn' class= "btn btn-success btn-rounded" >
+<section style="background-color: #eee;">
+  <div class="container py-5" id ='container'>
 
- </form> 
- <br><br>
-<a href='/logout' class="btn btn-danger btn-rounded" style="margin-top:5px; margin-left:50%;">logout</a>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-6">
+
+        <div class="card" id="chat2">
+          <div class="card-header d-flex justify-content-between align-items-center p-3">
+            <h5 class="mb-0">Chat with {{other_user.name}}</h5>
+
+          </div>
+          <div class="card-body" data-mdb-perfect-scrollbar="true" id='textarea' style="position: relative; overflow:auto; height: 400px">
+
+            
+
+            
+
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+            <input type="text" class="form-control form-control-lg" id="text"
+              placeholder="Type message">
+           
+            <button type="button" class="btn btn-primary btn-sm m-1 p-2" data-mdb-ripple-color="dark" id="btn">send</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<button type="button" class="btn btn-primary btn-sm m-1 p-2" data-mdb-ripple-color="dark" id="btn2">scrolldown</button>
+
 {{ other_user_id|json_script:"other_user_id" }}
 {{sender|json_script:"sender"}}
 
