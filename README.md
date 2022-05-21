@@ -1,6 +1,8 @@
 
 
 
+********************for personal use only************************
+Don't wanna use insta,fb , whatsapp just wanna talk with her/him without ads without anything else without save your data without verfiy anythin without telling anyone just you and your..
 
 
 The chating website for everyone with best privacy feature ever.
@@ -24,16 +26,26 @@ The chating website for everyone with best privacy feature ever.
 5. Nothing store over database.(chats, chats time nothing)
 6. just for them who want's to chat just with her/him..not with platfrom also.
 
+SignUp page can be find online at https://liketotalk.herokuapp.com/
+![Screensho![Screenshot (220)](https://user-images.githubusercontent.com/100985563/169635752-e8e10027-b260-4de9-bece-8b1581bb6ebf.png)
+
+Login page online at https://liketotalk.herokuapp.com/login![Screenshot (219)](https://user-images.githubusercontent.com/100985563/169635824-a6c78c46-81bc-4d31-b7e6-f6113759dadf.png)
+
+Chating page looks like this-->
 ![Screenshot (222)](https://user-images.githubusercontent.com/100985563/169635747-3803baba-9e57-4a28-8af8-30557c933cee.png)
+
+profile page --->
 ![Screenshot (221)](https://user-images.githubusercontent.com/100985563/169635753-e5529fc1-c9f2-4422-8473-afcd55cedd1a.png)
 
-![Screensho![Screenshot (220)](https://user-images.githubusercontent.com/100985563/169635752-e8e10027-b260-4de9-bece-8b1581bb6ebf.png)
-t (219)](https://user-images.githubusercontent.com/100985563/169635726-92996f12-c67c-4216-aa03-1fad2c9a5a39.png)
+
+Mobile view of website--->
+![Screenshot (224)](https://user-images.githubusercontent.com/100985563/169635736-270c88a9-fc1e-4979-b733-ec84bed3f4c2.png)
+
+chats with console->
 ![Screenshot (223)](https://user-images.githubusercontent.com/100985563/169635742-1b091de1-f460-4d6c-80bf-92136626a5eb.png)
 
-SignUp page can ![Screenshot (224)](https://user-images.githubusercontent.com/100985563/169635736-270c88a9-fc1e-4979-b733-ec84bed3f4c2.png)
-be find online at https://liketotalk.herokuapp.com/
-Login page online at https://liketotalk.herokuapp.com/login
+
+
  At this time this website just signup and loging page 
  
  *************************************************For host website online **********************
