@@ -1,5 +1,5 @@
 
-
+talk with freely just with yours...
 
 ********************for personal use only************************
 Don't wanna use insta,fb , whatsapp just wanna talk with her/him without ads without anything else without save your data without verfiy anythin without telling anyone just you and your..
@@ -29,7 +29,7 @@ The chating website for everyone with best privacy feature ever.
 SignUp page can be find online at https://liketotalk.herokuapp.com/
 ![Screensho![Screenshot (220)](https://user-images.githubusercontent.com/100985563/169635752-e8e10027-b260-4de9-bece-8b1581bb6ebf.png)
 
-Login page online at https://liketotalk.herokuapp.com/login![Screenshot (219)](https://user-images.githubusercontent.com/100985563/169635824-a6c78c46-81bc-4d31-b7e6-f6113759dadf.png)
+Login page online at https://liketotalk.herokuapp.com/login/ ![Screenshot (219)](https://user-images.githubusercontent.com/100985563/169635824-a6c78c46-81bc-4d31-b7e6-f6113759dadf.png)
 
 Chating page looks like this-->
 ![Screenshot (222)](https://user-images.githubusercontent.com/100985563/169635747-3803baba-9e57-4a28-8af8-30557c933cee.png)
